@@ -16,15 +16,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { src: VIDEOS.fast };
+    this.changeState = this.changeState.bind(this);
   }
   changeState(newVideo){
-    
+    this.setState({
+      src: VIDEOS[newVideo]
+    });
   }
 
   render() {
     return (
       <div>
-        <Menu />
+        <Menu onClick={this.changeState}/>
         <Video src={this.state.src} />
       </div>
     );
